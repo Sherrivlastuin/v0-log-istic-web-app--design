@@ -18,6 +18,7 @@ export default function LandingPage() {
   const [adminUsername, setAdminUsername] = useState("")
   const [adminPassword, setAdminPassword] = useState("")
   const [loginError, setLoginError] = useState("")
+  const [showAdminForm, setShowAdminForm] = useState(false)
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault()
@@ -298,52 +299,73 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Admin Login Section */}
-            <div className="md:col-span-2">
-              <Card className="bg-white shadow-md border-orange-200">
-                <CardHeader>
-                  <CardTitle className="text-sm md:text-base text-orange-600">Admin Login</CardTitle>
-                  <CardDescription className="text-xs">Staff access only</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleAdminLogin} className="space-y-3">
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="space-y-1">
-                        <Label htmlFor="admin-username" className="text-xs">
-                          Username
-                        </Label>
-                        <Input
-                          id="admin-username"
-                          placeholder="Username"
-                          value={adminUsername}
-                          onChange={(e) => setAdminUsername(e.target.value)}
-                          className="border-orange-200 focus:border-orange-600 text-sm h-8"
-                        />
+            {/* Admin Button/Login Section */}
+            <div className="md:col-span-2 flex items-center justify-end">
+              {!showAdminForm && (
+                <Button
+                  onClick={() => setShowAdminForm(true)}
+                  variant="outline"
+                  className="border-orange-600 text-orange-600 hover:bg-orange-50 text-sm"
+                >
+                  Admin
+                </Button>
+              )}
+              {showAdminForm && (
+                <Card className="bg-white shadow-md border-orange-200 w-full">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <CardTitle className="text-sm md:text-base text-orange-600">Admin Login</CardTitle>
+                        <CardDescription className="text-xs">Staff access only</CardDescription>
                       </div>
-                      <div className="space-y-1">
-                        <Label htmlFor="admin-password" className="text-xs">
-                          Password
-                        </Label>
-                        <Input
-                          id="admin-password"
-                          type="password"
-                          placeholder="Password"
-                          value={adminPassword}
-                          onChange={(e) => setAdminPassword(e.target.value)}
-                          className="border-orange-200 focus:border-orange-600 text-sm h-8"
-                        />
-                      </div>
+                      <button
+                        onClick={() => setShowAdminForm(false)}
+                        className="text-gray-400 hover:text-gray-600 text-lg"
+                      >
+                        ✕
+                      </button>
                     </div>
-                    {loginError && <p className="text-xs text-red-500">{loginError}</p>}
-                    <Button
-                      type="submit"
-                      className="w-full bg-orange-600 hover:bg-orange-700 text-white text-sm h-8"
-                    >
-                      Admin Login
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                  </CardHeader>
+                  <CardContent>
+                    <form onSubmit={handleAdminLogin} className="space-y-3">
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="space-y-1">
+                          <Label htmlFor="admin-username" className="text-xs">
+                            Username
+                          </Label>
+                          <Input
+                            id="admin-username"
+                            placeholder="Username"
+                            value={adminUsername}
+                            onChange={(e) => setAdminUsername(e.target.value)}
+                            className="border-orange-200 focus:border-orange-600 text-sm h-8"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <Label htmlFor="admin-password" className="text-xs">
+                            Password
+                          </Label>
+                          <Input
+                            id="admin-password"
+                            type="password"
+                            placeholder="Password"
+                            value={adminPassword}
+                            onChange={(e) => setAdminPassword(e.target.value)}
+                            className="border-orange-200 focus:border-orange-600 text-sm h-8"
+                          />
+                        </div>
+                      </div>
+                      {loginError && <p className="text-xs text-red-500">{loginError}</p>}
+                      <Button
+                        type="submit"
+                        className="w-full bg-orange-600 hover:bg-orange-700 text-white text-sm h-8"
+                      >
+                        Admin Login
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </div>
         </div>
