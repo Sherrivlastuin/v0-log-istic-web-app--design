@@ -22,7 +22,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
-      </body><script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=gpULfc55i9m4"></script>
+      </body>
     </html>
   )
 }
