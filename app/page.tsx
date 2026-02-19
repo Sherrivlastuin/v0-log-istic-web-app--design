@@ -23,7 +23,7 @@ export default function LandingPage() {
     e.preventDefault()
     setLoginError("")
 
-    if (adminUsername === "Admin" && adminPassword === "Admin12345") {
+    if (adminUsername === "Admin" && adminPassword === "Admin2492") {
       window.location.href = "/admin"
     } else {
       setLoginError("Invalid username or password")
@@ -66,92 +66,36 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
-                <Tabs defaultValue="track" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2 bg-white">
-                    <TabsTrigger
-                      value="track"
-                      className="data-[state=active]:bg-orange-600 data-[state=active]:text-white"
+                <Card className="bg-white shadow-lg">
+                  <CardHeader>
+                    <CardTitle className="text-orange-600">Track Your Parcel</CardTitle>
+                    <CardDescription>Enter your tracking ID to track your delivery.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="tracking-id">Tracking ID</Label>
+                      <Input
+                        id="tracking-id"
+                        placeholder="e.g., MSM123456"
+                        value={trackingId}
+                        onChange={(e) => setTrackingId(e.target.value)}
+                        className="border-orange-200 focus:border-orange-600"
+                      />
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                      disabled={!trackingId}
+                      asChild
                     >
-                      Track Parcel
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="admin"
-                      className="data-[state=active]:bg-orange-600 data-[state=active]:text-white"
-                    >
-                      Admin
-                    </TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="track">
-                    <Card className="bg-white shadow-lg">
-                      <CardHeader>
-                        <CardTitle className="text-orange-600">Track Your Parcel</CardTitle>
-                        <CardDescription>Enter your tracking ID to track your delivery.</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="tracking-id">Tracking ID</Label>
-                          <Input
-                            id="tracking-id"
-                            placeholder="e.g., MSM123456"
-                            value={trackingId}
-                            onChange={(e) => setTrackingId(e.target.value)}
-                            className="border-orange-200 focus:border-orange-600"
-                          />
-                        </div>
-                      </CardContent>
-                      <CardFooter>
-                        <Button
-                          className="w-full bg-orange-600 hover:bg-orange-700 text-white"
-                          disabled={!trackingId}
-                          asChild
-                        >
-                          <Link href={`/track/${trackingId}`}>
-                            Track Order
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </TabsContent>
-                  <TabsContent value="admin">
-                    <Card className="bg-white shadow-lg">
-                      <CardHeader>
-                        <CardTitle className="text-orange-600">Admin Login</CardTitle>
-                        <CardDescription>Login to access the admin dashboard.</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <form onSubmit={handleAdminLogin} className="space-y-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="admin-username">Username</Label>
-                            <Input
-                              id="admin-username"
-                              placeholder="Enter username"
-                              value={adminUsername}
-                              onChange={(e) => setAdminUsername(e.target.value)}
-                              className="border-orange-200 focus:border-orange-600"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="admin-password">Password</Label>
-                            <Input
-                              id="admin-password"
-                              type="password"
-                              placeholder="Enter password"
-                              value={adminPassword}
-                              onChange={(e) => setAdminPassword(e.target.value)}
-                              className="border-orange-200 focus:border-orange-600"
-                            />
-                          </div>
-                          {loginError && <p className="text-sm text-red-500">{loginError}</p>}
-                          <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700 text-white">
-                            Login
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </form>
-                      </CardContent>
-                    </Card>
-                  </TabsContent>
-                </Tabs>
+                      <Link href={`/track/${trackingId}`}>
+                        Track Order
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
               </div>
             </div>
           </div>
@@ -325,28 +269,82 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-orange-200 py-6 md:py-8 bg-gray-50">
-        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/msm-courier-logo.jpg"
-              alt="MSM Courier Logo"
-              width={32}
-              height={32}
-              className="object-contain"
-            />
-            <p className="text-sm text-gray-600">© 2025 MSM COURIER. All rights reserved.</p>
-          </div>
-          <div className="flex gap-4">
-            <Link href="#" className="text-sm text-orange-600 hover:underline font-medium">
-              Terms
-            </Link>
-            <Link href="#" className="text-sm text-orange-600 hover:underline font-medium">
-              Privacy
-            </Link>
-            <Link href="#" className="text-sm text-orange-600 hover:underline font-medium">
-              Contact
-            </Link>
+      <footer className="border-t border-orange-200 py-8 md:py-12 bg-gray-50">
+        <div className="container px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Footer Info */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2 mb-2">
+                <Image
+                  src="/msm-courier-logo.jpg"
+                  alt="MSM Courier Logo"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+                <p className="text-sm font-semibold text-gray-800">MSM COURIER</p>
+              </div>
+              <p className="text-xs text-gray-600">© 2025 MSM COURIER. All rights reserved.</p>
+              <div className="flex gap-4 pt-2">
+                <Link href="#" className="text-xs text-orange-600 hover:underline font-medium">
+                  Terms
+                </Link>
+                <Link href="#" className="text-xs text-orange-600 hover:underline font-medium">
+                  Privacy
+                </Link>
+                <Link href="#" className="text-xs text-orange-600 hover:underline font-medium">
+                  Contact
+                </Link>
+              </div>
+            </div>
+
+            {/* Admin Login Section */}
+            <div className="md:col-span-2">
+              <Card className="bg-white shadow-md border-orange-200">
+                <CardHeader>
+                  <CardTitle className="text-sm md:text-base text-orange-600">Admin Login</CardTitle>
+                  <CardDescription className="text-xs">Staff access only</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleAdminLogin} className="space-y-3">
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="space-y-1">
+                        <Label htmlFor="admin-username" className="text-xs">
+                          Username
+                        </Label>
+                        <Input
+                          id="admin-username"
+                          placeholder="Username"
+                          value={adminUsername}
+                          onChange={(e) => setAdminUsername(e.target.value)}
+                          className="border-orange-200 focus:border-orange-600 text-sm h-8"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label htmlFor="admin-password" className="text-xs">
+                          Password
+                        </Label>
+                        <Input
+                          id="admin-password"
+                          type="password"
+                          placeholder="Password"
+                          value={adminPassword}
+                          onChange={(e) => setAdminPassword(e.target.value)}
+                          className="border-orange-200 focus:border-orange-600 text-sm h-8"
+                        />
+                      </div>
+                    </div>
+                    {loginError && <p className="text-xs text-red-500">{loginError}</p>}
+                    <Button
+                      type="submit"
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white text-sm h-8"
+                    >
+                      Admin Login
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </footer>
