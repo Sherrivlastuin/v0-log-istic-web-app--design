@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
- 
+  productionBrowserSourceMaps: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
