@@ -139,7 +139,7 @@ export function MainLayout({ children, userRole = null, userName = "User" }: Mai
             </SidebarGroup>
           </SidebarContent>
           <SidebarFooter>
-            <div className="px-3 py-2">
+            <div className="py-2 leading-9 tracking-normal px-5 border-none">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="w-full justify-start gap-2">
@@ -166,12 +166,12 @@ export function MainLayout({ children, userRole = null, userName = "User" }: Mai
             </div>
           </SidebarFooter>
         </Sidebar>
-        <div className="flex-1">
-          <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px]">
+        <div className="flex-1 leading-6 my-1 px-7 mx-4">
+          <header className="flex h-14 items-center gap-4 border-b lg:h-[60px] bg-muted flex-row mx-16 px-8">
             <SidebarTrigger />
             <div className="flex-1" />
           </header>
-          <main className="flex-1 p-4 md:p-6">{children}</main>
+          <main className="flex-1 p-4 md:p-6 text-left shadow border-solid border-popover-foreground bg-muted border-0 my-0.5 tracking-tighter text-base font-normal font-mono mx-16 md:py-2 md:px-2">{children}</main>
         </div>
       </div>
     </SidebarProvider>

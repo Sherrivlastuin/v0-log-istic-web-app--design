@@ -150,7 +150,7 @@ export default function OrdersPage() {
   if (isLoading) {
     return (
       <MainLayout userRole="admin" userName="Admin User">
-        <div className="flex items-center justify-center h-64">
+        <div className="py-0 mx-36 space-y-0 border-0 px-72">
           <Loader2 className="h-8 w-8 animate-spin text-orange-600" />
         </div>
       </MainLayout>
@@ -159,7 +159,7 @@ export default function OrdersPage() {
 
   return (
     <MainLayout userRole="admin" userName="Admin User">
-      <div className="space-y-6">
+      <div className="space-y-6 py-0 px-0">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Orders</h2>

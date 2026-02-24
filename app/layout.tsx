@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className="border-muted border-solid py-11 border-8 px-52" lang="en" suppressHydrationWarning>
+    <html className="border-muted border-solid py-11 border-8 px-28 mx-4" lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
