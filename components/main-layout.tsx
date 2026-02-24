@@ -171,7 +171,7 @@ export function MainLayout({ children, userRole = null, userName = "User" }: Mai
             <SidebarTrigger />
             <div className="flex-1" />
           </header>
-          <main className="flex-1 p-4 md:p-6">{children}</main>
+          <main className="flex-1 p-4 md:p-6 tracking-normal text-sm font-mono md:px-48 mx-1 my-0.5 md:py-px border-8">{children}</main>
         </div>
       </div>
     </SidebarProvider>
