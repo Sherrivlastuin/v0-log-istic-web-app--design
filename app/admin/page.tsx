@@ -157,7 +157,7 @@ export default function AdminDashboard() {
             <CardContent className="p-0">
               <div className="aspect-video bg-muted relative">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  
+                  <p className="text-muted-foreground">Interactive map would appear here</p>
                 </div>
               </div>
             </CardContent>
