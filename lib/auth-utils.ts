@@ -83,6 +83,6 @@ export function createTimelineEntry(
     date: timestamp ? formatTimestamp(timestamp) : 'Pending',
     timestamp: timestamp || '',
     completed: isCompleted,
-    canEdit: isUserAdmin(userRole),
+    canEdit: isUserAdmin(false),
   }
 }
