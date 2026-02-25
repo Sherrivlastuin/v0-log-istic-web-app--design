@@ -86,28 +86,3 @@ export function createTimelineEntry(
     canEdit: isUserAdmin(userRole),
   }
 }
-
-/**
- * Validate timestamp format and logic
- */
-export function validateTimestamp(
-  timestamp: string,
-  previousTimestamps?: { [key: string]: string }
-): { valid: boolean; error?: string } {
-  try {
-    const date = new Date(timestamp)
-
-    if (isNaN(date.getTime())) {
-      return { valid: false, error: 'Invalid date format' }
-    }
-
-    // Ensure timestamp is not in the future
-    if (date > new Date()) {
-      return { valid: false, error: 'Timestamp cannot be in the future' }
-    }
-
-    return { valid: true }
-  } catch (error) {
-    return { valid: false, error: 'Timestamp validation failed' }
-  }
-}
