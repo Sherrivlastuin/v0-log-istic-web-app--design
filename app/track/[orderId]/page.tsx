@@ -184,12 +184,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
                           <p className="font-medium">{step.status}</p>
                           {step.status !== "Order Placed" ? (
                             <div className="flex items-center gap-2 mt-2">
-                              <input
-                                type="datetime-local"
-                                value={editingDates[step.status] || ""}
-                                onChange={(e) => handleDateChange(step.status, e.target.value)}
-                                className="text-sm border rounded px-2 py-1 bg-background"
-                              />
+                              
                               {editingDates[step.status] && (
                                 <Button
                                   size="sm"
