@@ -1,6 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isUserAdmin, validateTimestamp, type UserRole } from '@/lib/auth-utils'
 
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { orderId: string } }
+) {
+  try {
+    // TODO: Replace with actual database query
+    // const order = await db.orders.findById(params.orderId)
+    
+    // Mock order data for now
+    const mockOrder = {
+      id: params.orderId,
+      tracking_code: params.orderId,
+      recipient_name: "John Doe",
+      recipient_address: "123 Main St, City, State 12345",
+      status: "In Transit",
+      contents_description: "Electronics Package",
+      weight: 2.5,
+      quantity: 1,
+      created_at: new Date().toISOString(),
+    }
+
+    return NextResponse.json(mockOrder, { status: 200 })
+  } catch (error) {
+    console.error('Error fetching order:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch order' },
+      { status: 500 }
+    )
+  }
+}
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: { orderId: string } }
