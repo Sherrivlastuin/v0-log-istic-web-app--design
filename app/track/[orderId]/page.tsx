@@ -64,7 +64,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen flex-col bg-popover">
         <Loader2 className="h-8 w-8 animate-spin text-orange-600" />
       </div>
     )
@@ -129,7 +129,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
   ]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <header className="flex h-16 items-center border-b px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <Package className="h-6 w-6 text-primary" />
@@ -206,7 +206,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
               </CardContent>
             </Card>
 
-            <div className="space-y-6">
+            <div className="space-y-6 bg-muted">
               <Card>
                 <CardHeader>
                   <CardTitle>Delivery Information</CardTitle>
