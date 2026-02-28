@@ -64,7 +64,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen flex-col bg-popover">
+      <div className="flex min-h-screen items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-orange-600" />
       </div>
     )
@@ -129,7 +129,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col">
       <header className="flex h-16 items-center border-b px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2">
           <Package className="h-6 w-6 text-primary" />
@@ -184,7 +184,12 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
                           <p className="font-medium">{step.status}</p>
                           {step.status !== "Order Placed" ? (
                             <div className="flex items-center gap-2 mt-2">
-                              
+                              <input
+                                type="datetime-local"
+                                value={editingDates[step.status] || ""}
+                                onChange={(e) => handleDateChange(step.status, e.target.value)}
+                                className="text-sm border rounded py-1 bg-background opacity-0 px-[px]"
+                              />
                               {editingDates[step.status] && (
                                 <Button
                                   size="sm"
@@ -206,7 +211,7 @@ export default function TrackingPage({ params }: { params: { orderId: string } }
               </CardContent>
             </Card>
 
-            <div className="space-y-6 bg-muted">
+            <div className="space-y-6">
               <Card>
                 <CardHeader>
                   <CardTitle>Delivery Information</CardTitle>

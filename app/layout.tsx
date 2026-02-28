@@ -1,7 +1,12 @@
 import type React from "react"
-import { Inter } from "next/font/google"
+
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+
+import { Inter, Arvo as V0_Font_Arvo } from 'next/font/google'
+
+// Initialize fonts
+const _arvo = V0_Font_Arvo({ subsets: ['latin'], weight: ["400","700"] })
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,7 +27,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
-      </body>
+      </body><script id="chatway" async="true" src="https://cdn.chatway.app/widget.js?id=gpULfc55i9m4"></script>
     </html>
   )
 }

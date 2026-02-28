@@ -125,3 +125,6 @@
 body {
   @apply bg-background text-foreground;
 }
+@theme inline {
+  --font-sans: 'Arimo', 'Arimo Fallback';
+  --font-serif: 'Arvo', 'Arvo Fallback';}
